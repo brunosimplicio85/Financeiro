@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<ui:insert name="metadata" />
+
+	
+<h:head>
+
+	<h:outputStylesheet library="css" name="estilo.css" />
+	<h:outputScript library="js" name="scripts.js" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Sistema</title>
+</h:head>
+<h:body>
+
+<p:growl id="mensagem"/>
+
+	<p:layout fullPage="true">
+
+		
+		<p:layoutUnit position="west" size="200" resizable="false"
+			closable="false" collapsible="false">
+
+			<h:form>
+				<p:panelMenu>
+
+					<p:submenu label="Arquivo">
+						<p:menuitem value="Principal"  outcome="/page/principal.xhtml" />
+						<p:menuitem value="Sair" icon="ui-icon-power" outcome="/page/autenticacao.xhtml"/>
+					</p:submenu>
+
+					<p:submenu label="Cadastros" rendered="#{autenticacaoBean.temPermissoes(['A', 'G'])}">
+						<p:menuitem value="Estados"  outcome="/page/estado.xhtml" />
+						<p:menuitem value="Cidades"  outcome="/page/cidade.xhtml" />
+						<p:menuitem value="Fornecedores" outcome="/page/fornecedor.xhtml" />
+						<p:menuitem value="Funcionários" outcome="/page/funcionario.xhtml" />
+						<p:menuitem value="Produtos"  outcome="/page/produto.xhtml" />
+						<p:menuitem value="Pessoas"  outcome="/page/pessoa.xhtml" />
+						<p:menuitem value="Usuário"  outcome="/page/usuario.xhtml" />
+						
+					</p:submenu>
+					
+					<p:submenu label="Vendas"  >
+					<p:menuitem value="Cadastro"  outcome="/page/pessoaCadastro.xhtml"  />
+					<p:menuitem value="Cliente"  outcome="/page/cliente.xhtml" />
+					<p:menuitem value="Vendas" outcome="/page/venda.xhtml" />
+					</p:submenu>
+					
+					<p:submenu label="Consultas"  >
+					<p:menuitem value="Produtos" outcome="/page/produtosconsulta.xhtml" />
+					<p:menuitem value="Venda" outcome="/page/vendaconsulta.xhtml" />
+					</p:submenu>
+
+					<p:submenu label="Ajuda">
+					<p:menuitem value="Sobre" >
+					</p:menuitem>
+					</p:submenu>
+
+				</p:panelMenu>
+		
+			</h:form>
+			
+
+		</p:layoutUnit>
+
+
+		<p:layoutUnit position="center" resizable="false" closable="false"
+			collapsible="false">
+			<ui:insert name="conteudo" />
+		</p:layoutUnit>
+	</p:layout>
+
+</h:body>
+</html>
